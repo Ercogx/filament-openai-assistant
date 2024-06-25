@@ -72,7 +72,7 @@
                 },
             }"
             x-intersect="scroll()"
-            x-on:thread-updated.window="$nextTick(() => scroll())"
+            x-on:chat-updated.window="$nextTick(() => scroll())"
         >
             <div
                 class="mt-auto flex w-full flex-col justify-end"

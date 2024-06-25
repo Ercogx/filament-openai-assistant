@@ -72,7 +72,7 @@ class OpenaiAssistantPage extends Page
             $this->loadMessages();
         }
 
-        $this->dispatch('thread-updated');
+        $this->dispatch('chat-updated');
     }
 
     public function sendMessage(): void
@@ -83,6 +83,8 @@ class OpenaiAssistantPage extends Page
         ];
 
         $this->message = '';
+
+        $this->dispatch('chat-updated');
 
         $this->dispatch($this->selectedThread === 'new-thread' ? 'create-new-thread' : 'update-thread');
     }
@@ -104,6 +106,8 @@ class OpenaiAssistantPage extends Page
         $this->setCurrentThreadToCookie();
 
         $this->dispatch('change-selected-thread', id: $chatThread->thread_id);
+
+        $this->dispatch('chat-updated');
     }
 
     #[On('change-selected-thread')]
@@ -123,6 +127,8 @@ class OpenaiAssistantPage extends Page
                 $this->lastMessage()
             ),
         ];
+
+        $this->dispatch('chat-updated');
     }
 
     public function renameCurrentThread(): void
