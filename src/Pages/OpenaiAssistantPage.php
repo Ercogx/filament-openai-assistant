@@ -6,6 +6,7 @@ use Ercogx\FilamentOpenaiAssistant\Contracts\OpenaiThreadServicesContract as Thr
 use Ercogx\FilamentOpenaiAssistant\Models\ChatThread;
 use Ercogx\FilamentOpenaiAssistant\Services\ChatThreadModelServices;
 use Filament\Pages\Page;
+use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cookie;
 use Livewire\Attributes\Locked;
@@ -14,10 +15,6 @@ use OpenAI\Responses\Threads\Messages\ThreadMessageResponse;
 
 class OpenaiAssistantPage extends Page
 {
-    protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-oval-left';
-
-    protected static ?string $navigationLabel = 'Openai Assistant';
-
     protected static string $view = 'filament-openai-assistant::pages.assistant-chat';
 
     #[Locked]
@@ -183,6 +180,16 @@ class OpenaiAssistantPage extends Page
     public function loadMoreMessage(): void
     {
         $this->loadMessages($this->lastMessageId);
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('filament-openai-assistant::assistant-page.navigation_label');
+    }
+
+    public static function getNavigationIcon(): string | Htmlable | null
+    {
+        return config('filament-openai-assistant.navigation_icon', 'heroicon-o-chat-bubble-oval-left');
     }
 
     protected function loadThreads(): void

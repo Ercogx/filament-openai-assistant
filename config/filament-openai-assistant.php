@@ -13,4 +13,6 @@ return [
     ],
 
     'message_request_limit' => env('OPENAI_ASSISTANT_MESSAGE_REQUEST_LIMIT', 20),
+
+    'navigation_icon' => 'heroicon-o-chat-bubble-oval-left',
 ];

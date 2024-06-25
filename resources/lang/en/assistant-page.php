@@ -11,4 +11,5 @@ return [
 
     'send' => 'Send',
 
+    'navigation_label' => 'OpenAI Assistant',
 ];
