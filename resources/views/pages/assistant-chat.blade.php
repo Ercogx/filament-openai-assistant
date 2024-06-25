@@ -1,6 +1,6 @@
 <x-filament-panels::page fullHeight="true">
     <div
-        class="flex h-full flex-col justify-between"
+        class="flex h-full max-w-4xl flex-col justify-between"
         x-data="{}"
         x-load-css="[@js(\Filament\Support\Facades\FilamentAsset::getStyleHref('filament-openai-assistant', 'ercogx/filament-openai-assistant'))]"
     >
@@ -33,7 +33,7 @@
             @if ($selectedThread !== 'new-thread')
                 <x-filament::modal id="rename-thread">
                     <x-slot name="trigger">
-                        <x-filament::button>
+                        <x-filament::button class="w-full">
                             {{ __('filament-openai-assistant::assistant-page.rename_current_thread') }}
                         </x-filament::button>
                     </x-slot>
@@ -65,19 +65,18 @@
 
         <div
             class="assistant-ai-messages mt-4 flex flex-grow overflow-y-auto"
-            style="max-height: calc(100vh - 21rem)"
             x-data="{
-                scroll: () => {
+                isScrollable: false,
+                scroll() {
                     $el.scrollTo(0, $el.scrollHeight)
+                    this.isScrollable = $el.offsetHeight < $el.scrollHeight
                 },
             }"
             x-intersect="scroll()"
             x-on:chat-updated.window="$nextTick(() => scroll())"
+            :style="isScrollable && { 'padding-right': '1rem' }"
         >
-            <div
-                class="mt-auto flex w-full flex-col justify-end"
-                style="padding: 0 1px"
-            >
+            <div class="mt-auto flex w-full flex-col justify-end">
                 @if ($hasMore)
                     <div class="mb-4 flex w-full justify-center">
                         <x-filament::button
@@ -92,7 +91,7 @@
                 @foreach ($messages as $message)
                     <div
                         @class([
-                            'mb-4 max-w-3xl rounded-xl bg-white p-4 shadow-sm ring-1 ring-gray-950/5 dark:bg-white/5 dark:ring-white/10',
+                            'mb-4 max-w-xl rounded-xl bg-white p-4 shadow-sm ring-1 ring-gray-950/5 dark:bg-white/5 dark:ring-white/10',
                             'self-end' => $message['role'] === 'user',
                             'self-start' => $message['role'] === 'assistant',
                         ])

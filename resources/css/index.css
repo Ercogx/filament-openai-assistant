@@ -53,6 +53,12 @@ html.dark .loader-ioa {
     }
 }
 
+.assistant-ai-messages {
+    max-height: calc(100vh - 21rem);
+    padding-left: 1px;
+    padding-right: 1px;
+}
+
 .assistant-ai-message > * {
     margin-bottom: 1rem;
 }
