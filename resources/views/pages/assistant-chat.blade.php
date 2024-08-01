@@ -104,7 +104,9 @@
                         <div
                             class="assistant-ai-message text-sm leading-6 text-gray-950 dark:text-white"
                         >
-                            {!! (new \Parsedown())->text($message['text']) !!}
+                            <template shadowrootmode="open">
+                                {!! (new \Parsedown())->text($message['text']) !!}
+                            </template>
                         </div>
                     </div>
                 @endforeach
