@@ -27,3 +27,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Add shadow DOM to isolate css markdown text
+
+## [1.0.3] - 2024-08-06
+
+### Fixed
+- Issue with update shadow DOM by livewire
