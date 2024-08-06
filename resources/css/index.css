@@ -58,3 +58,7 @@ html.dark .loader-ioa {
     padding-left: 1px;
     padding-right: 1px;
 }
+
+.reset-styles *{
+    all: revert;
+}
