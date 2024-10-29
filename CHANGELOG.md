@@ -32,3 +32,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Issue with update shadow DOM by livewire
+
+## [1.0.4] - 2024-10-29
+
+### Added
+- Add createdAt to message info
