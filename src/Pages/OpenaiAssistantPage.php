@@ -168,6 +168,7 @@ class OpenaiAssistantPage extends Page
                 foreach ($message->content as $content) {
                     if ($content->type === 'text') {
                         $simpleMessages[] = [
+                            'createdAt' => $message->createdAt,
                             'role' => $message->role,
                             'text' => $message->content[0]->text->value,
                         ];
