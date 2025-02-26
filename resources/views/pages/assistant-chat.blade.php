@@ -105,7 +105,7 @@
                             class="assistant-ai-message text-sm leading-6 text-gray-950 dark:text-white"
                         >
                             <div class="reset-styles">
-                                {!! (new \Parsedown())->text($message['text']) !!}
+                                {!! \Illuminate\Support\Str::markdown($message['text']) !!}
                             </div>
                         </div>
                     </div>
